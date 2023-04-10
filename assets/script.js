@@ -3,21 +3,19 @@ const hour9 = document.getElementById("hour-9");
 let date = new Date();
 let hour = date.getHours();
 
-
-
 $('.time-block').each(function() {
-
-  if (parseInt($(this).attr("id")) == hour) {
+  let block = parseInt($(this).attr("id"));
+  if (block == hour) {
     $(this).addClass("present"); 
     $(this).removeClass("past"); 
     $(this).removeClass("future"); 
   }
-    else if (parseInt($(this).attr("id")) >= hour) {
+    else if (block >= hour) {
       $(this).removeClass("present"); 
       $(this).removeClass("past"); 
       $(this).addClass("future"); 
   }
-      else if (parseInt($(this).attr("id")) <= hour) {
+      else  { 
         $(this).removeClass("present"); 
         $(this).addClass("past"); 
         $(this).removeClass("future"); 
@@ -26,7 +24,22 @@ $('.time-block').each(function() {
   
 
 $(document).ready(function() {
-  $('#hour-9').addClass("inactive"); 
+  $('.saveBtn').on("click", function(e) {
+    e.preventDefault();
+    let id = $(this).parent().attr("id");
+    let text = $(this).siblings(".description").val();
+    localStorage.setItem(id, text);
+  });
+  $("#9 .description").val(localStorage.getItem("9"));
+  $("#10 .description").val(localStorage.getItem("10"));
+  $("#11 .description").val(localStorage.getItem("11"));
+  $("#12 .description").val(localStorage.getItem("12"));
+  $("#13 .description").val(localStorage.getItem("13"));
+  $("#14 .description").val(localStorage.getItem("14"));
+  $("#15 .description").val(localStorage.getItem("15"));
+  $("#16 .description").val(localStorage.getItem("16"));
+  $("#17 .description").val(localStorage.getItem("17"));
+  console.log("Saved!");
   showDateTime();
 });
 

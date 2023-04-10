@@ -45,6 +45,14 @@ textarea {
   color: white;
 }
 
+.inactive{
+  height: 50px;
+}
+
+.active {
+  height: 120px;
+}
+
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
